@@ -1,0 +1,1606 @@
+@prefix : <http://www.cs.ccsu.edu/AditiSharma/University.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.cs.ccsu.edu/AditiSharma/University.owl> .
+
+<http://www.cs.ccsu.edu/AditiSharma/University.owl> rdf:type owl:Ontology ;
+                                                     rdfs:comment """Name: Aditi Sharma
+Course: CS407
+Domain: University
+Overview: This project contains major aspects of University domain including super class and subclass hierarchy.""" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#has_Appear_In
+:has_Appear_In rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :Student ;
+               rdfs:range :Examination .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#has_Attends
+:has_Attends rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf :is_Attended_By ;
+             rdfs:domain :CampusEvents ;
+             rdfs:range :Person .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#has_Enrolled_In
+:has_Enrolled_In rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain :Student ;
+                 rdfs:range :Programs .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#has_Grading
+:has_Grading rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#has_Prerequisite
+:has_Prerequisite rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  owl:inverseOf :is_Prerequisite_Of ;
+                  rdfs:domain :Programs ;
+                  rdfs:range :Programs .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#is_Attended_By
+:is_Attended_By rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :CampusEvents ;
+                rdfs:range :Person .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#is_Offered_By
+:is_Offered_By rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               owl:inverseOf :offers ;
+               rdfs:domain :Programs ;
+               rdfs:range :TeachingFaculty .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#is_Prerequisite_Of
+:is_Prerequisite_Of rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain :Programs ;
+                    rdfs:range :Programs .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#is_Used_By
+:is_Used_By rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            owl:inverseOf :uses ;
+            rdfs:domain :Library ,
+                        :Publications ;
+            rdfs:range :Programs .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#offers
+:offers rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdfs:domain :TeachingFaculty ;
+        rdfs:range :Programs .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#studies
+:studies rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#teaches
+:teaches rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdfs:domain :Faculty ;
+         rdfs:range :Programs .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#uses
+:uses rdf:type owl:ObjectProperty ;
+      rdfs:subPropertyOf owl:topObjectProperty ;
+      rdfs:domain :Library ,
+                  :Publications ;
+      rdfs:range :Programs .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Email_Id
+:Email_Id rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Person ;
+          rdfs:range xsd:string .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Event_Date
+:Event_Date rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :CampusEvents ;
+            rdfs:range xsd:string .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Event_Venue
+:Event_Venue rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :CampusEvents ;
+             rdfs:range xsd:string .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Gender
+:Gender rdf:type owl:DatatypeProperty .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#ISBN
+:ISBN rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdfs:domain :Books ,
+                  :Publications ;
+      rdfs:range xsd:string .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Qualification
+:Qualification rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Person ;
+               rdfs:range xsd:string .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Year_Of_Admission
+:Year_Of_Admission rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :Student ;
+                   rdfs:range xsd:integer .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Year_Of_Graduation
+:Year_Of_Graduation rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain :Student ;
+                    rdfs:range xsd:integer .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#address
+:address rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Person ;
+         rdfs:range xsd:string .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#age
+:age rdf:type owl:DatatypeProperty ;
+     rdfs:subPropertyOf owl:topDataProperty ;
+     rdfs:domain :Person ;
+     rdfs:range xsd:integer .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#author
+:author rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Books ,
+                    :Publications ;
+        rdfs:range xsd:string .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#first_Name
+:first_Name rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Person ;
+            rdfs:range xsd:string .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#last_Name
+:last_Name rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain :Person ;
+           rdfs:range xsd:string .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#max_Score
+:max_Score rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain :Examination ;
+           rdfs:range xsd:integer .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#passing_Score
+:passing_Score rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Examination ;
+               rdfs:range xsd:integer .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#phone
+:phone rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Person ;
+       rdfs:range xsd:string .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#staff_Id
+:staff_Id rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Person ;
+          rdfs:range xsd:integer .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#student_Id
+:student_Id rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Person ;
+            rdfs:range xsd:integer .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#title
+:title rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Books ,
+                   :Publications ;
+       rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Accounting
+:Accounting rdf:type owl:Class ;
+            rdfs:subClassOf :Undergraduate ;
+            owl:disjointWith :Biochemistry ,
+                             :English ,
+                             :MathematicalScience .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#AdjunctFaculty
+:AdjunctFaculty rdf:type owl:Class ;
+                rdfs:subClassOf :TeachingFaculty .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Admission
+:Admission rdf:type owl:Class ;
+           rdfs:subClassOf :Departments .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Articles
+:Articles rdf:type owl:Class ;
+          rdfs:subClassOf :Library .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Biochemistry
+:Biochemistry rdf:type owl:Class ;
+              rdfs:subClassOf :Undergraduate ;
+              owl:disjointWith :English ,
+                               :MathematicalScience .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Books
+:Books rdf:type owl:Class ;
+       rdfs:subClassOf :Library .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CCSU
+:CCSU rdf:type owl:Class ;
+      rdfs:subClassOf :University .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CampusEvents
+:CampusEvents rdf:type owl:Class ;
+              rdfs:subClassOf :CCSU .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#ClubEvents
+:ClubEvents rdf:type owl:Class ;
+            rdfs:subClassOf :EventsList .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#ComputerInformationTechnology
+:ComputerInformationTechnology rdf:type owl:Class ;
+                               rdfs:subClassOf :MastersDegreeProgram .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#ComputerScience
+:ComputerScience rdf:type owl:Class ;
+                 rdfs:subClassOf :ComputerInformationTechnology ;
+                 owl:disjointWith :NetworkingAndTelecommunicationsTechnology .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#ConferenceEvent
+:ConferenceEvent rdf:type owl:Class ;
+                 rdfs:subClassOf :EventsList .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#ConstructionManagement
+:ConstructionManagement rdf:type owl:Class ;
+                        rdfs:subClassOf :OfficialCertificatePrograms ;
+                        owl:disjointWith :PreHealthStudies ,
+                                         :Tesol .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Courses
+:Courses rdf:type owl:Class ;
+         rdfs:subClassOf :Programs .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#DataMining
+:DataMining rdf:type owl:Class ;
+            rdfs:subClassOf :MastersDegreeProgram .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Departments
+:Departments rdf:type owl:Class ;
+             rdfs:subClassOf :CCSU .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#DoctoralDegreePrograms
+:DoctoralDegreePrograms rdf:type owl:Class ;
+                        rdfs:subClassOf :Graduate ;
+                        owl:disjointWith :MastersDegreeProgram ,
+                                         :OfficialCertificatePrograms .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#DoctorateOfNurseAnesthesia
+:DoctorateOfNurseAnesthesia rdf:type owl:Class ;
+                            rdfs:subClassOf :DoctoralDegreePrograms ;
+                            owl:disjointWith :EducationalLeadership .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#EducationalLeadership
+:EducationalLeadership rdf:type owl:Class ;
+                       rdfs:subClassOf :DoctoralDegreePrograms .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#English
+:English rdf:type owl:Class ;
+         rdfs:subClassOf :Undergraduate ;
+         owl:disjointWith :MathematicalScience .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#EventsList
+:EventsList rdf:type owl:Class ;
+            rdfs:subClassOf :CampusEvents .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Examination
+:Examination rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty :has_Appear_In ;
+                                   owl:someValuesFrom :Examination
+                                 ] ;
+             rdfs:subClassOf :CCSU .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Faculty
+:Faculty rdf:type owl:Class ;
+         rdfs:subClassOf :Person .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Final
+:Final rdf:type owl:Class ;
+       rdfs:subClassOf :Examination .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#FulltimeFaculty
+:FulltimeFaculty rdf:type owl:Class ;
+                 rdfs:subClassOf :TeachingFaculty .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#GradingSystem
+:GradingSystem rdf:type owl:Class ;
+               rdfs:subClassOf :Registrar .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Graduate
+:Graduate rdf:type owl:Class ;
+          rdfs:subClassOf :Programs ;
+          owl:disjointWith :Undergraduate .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Immigration
+:Immigration rdf:type owl:Class ;
+             rdfs:subClassOf :Departments .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#InstrumentalEnsembleEvent
+:InstrumentalEnsembleEvent rdf:type owl:Class ;
+                           rdfs:subClassOf :EventsList .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Library
+:Library rdf:type owl:Class ;
+         rdfs:subClassOf :Departments .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#MastersDegreeProgram
+:MastersDegreeProgram rdf:type owl:Class ;
+                      rdfs:subClassOf :Graduate ;
+                      owl:disjointWith :OfficialCertificatePrograms .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#MathematicalScience
+:MathematicalScience rdf:type owl:Class ;
+                     rdfs:subClassOf :Undergraduate .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Midterm
+:Midterm rdf:type owl:Class ;
+         rdfs:subClassOf :Examination .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#NetworkingAndTelecommunicationsTechnology
+:NetworkingAndTelecommunicationsTechnology rdf:type owl:Class ;
+                                           rdfs:subClassOf :ComputerInformationTechnology .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#NonTeachingFaculty
+:NonTeachingFaculty rdf:type owl:Class ;
+                    rdfs:subClassOf :Faculty ;
+                    owl:disjointWith :TeachingFaculty .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#OfficialCertificatePrograms
+:OfficialCertificatePrograms rdf:type owl:Class ;
+                             rdfs:subClassOf :Graduate .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Person
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf :CCSU .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#PreHealthStudies
+:PreHealthStudies rdf:type owl:Class ;
+                  rdfs:subClassOf :OfficialCertificatePrograms ;
+                  owl:disjointWith :Tesol .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Programs
+:Programs rdf:type owl:Class ;
+          rdfs:subClassOf :CCSU .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Publications
+:Publications rdf:type owl:Class ;
+              rdfs:subClassOf :Programs .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Quizz
+:Quizz rdf:type owl:Class ;
+       rdfs:subClassOf :Examination .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Registrar
+:Registrar rdf:type owl:Class ;
+           rdfs:subClassOf :Departments .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#SoftwareEngineering
+:SoftwareEngineering rdf:type owl:Class ;
+                     rdfs:subClassOf :MastersDegreeProgram .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student
+:Student rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :has_Enrolled_In ;
+                               owl:someValuesFrom :Courses
+                             ] ;
+         rdfs:subClassOf :Person .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#TeachingFaculty
+:TeachingFaculty rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty :teaches ;
+                                       owl:someValuesFrom :Courses
+                                     ] ;
+                 rdfs:subClassOf :Faculty .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Tesol
+:Tesol rdf:type owl:Class ;
+       rdfs:subClassOf :OfficialCertificatePrograms .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Undergraduate
+:Undergraduate rdf:type owl:Class ;
+               rdfs:subClassOf :Programs .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#University
+:University rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#AC300
+:AC300 rdf:type owl:NamedIndividual ,
+                :Accounting ,
+                :Courses ;
+       :is_Prerequisite_Of :AC407 ,
+                           :AC490 ;
+       :title "Intermediate Accounting I" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#AC407
+:AC407 rdf:type owl:NamedIndividual ,
+                :Accounting ,
+                :Courses ;
+       :has_Prerequisite :AC300 ;
+       :is_Offered_By :Lecture4 ;
+       :is_Prerequisite_Of :AC490 ;
+       :uses :Accounting ;
+       :title "Advanced Accounting" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#AC490
+:AC490 rdf:type owl:NamedIndividual ,
+                :Accounting ,
+                :Courses ;
+       :has_Prerequisite :AC300 ,
+                         :AC407 ;
+       :is_Offered_By :Lecture4 ;
+       :uses :Accounting_Theory ;
+       :title "Current Topics in Accounting" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#A_Superior
+:A_Superior rdf:type owl:NamedIndividual ,
+                     :GradingSystem .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Accounting
+:Accounting rdf:type owl:NamedIndividual ,
+                     :Books ;
+            :is_Used_By :AC407 ;
+            :author "Joe B.Hoyle" ;
+            :title "Advanced Accounting" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Accounting_Theory
+:Accounting_Theory rdf:type owl:NamedIndividual ,
+                            :Publications ;
+                   :is_Used_By :AC490 ;
+                   :author "Kimberly Ferlauto" ;
+                   :title "Contemporary Issues In Accounting" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Adjunct_Lecture1
+:Adjunct_Lecture1 rdf:type owl:NamedIndividual ,
+                           :AdjunctFaculty ,
+                           :TeachingFaculty ;
+                  :teaches :CET569 ,
+                           :CET594 ,
+                           :CET596 ,
+                           :CS595 ,
+                           :DATA513 ,
+                           :DATA531 ,
+                           :DATA551 ;
+                  :Email_Id "mariahernandez@my.ccsu.edu" ;
+                  :Gender "Female" ;
+                  :Qualification "PhD" ;
+                  :address "590 Asylum Ave., Hartford, CT" ;
+                  :first_Name "Maria" ;
+                  :last_Name "Hernandez" ;
+                  :phone "827-293-1083" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Adjunct_Lecture2
+:Adjunct_Lecture2 rdf:type owl:NamedIndividual ,
+                           :AdjunctFaculty ,
+                           :TeachingFaculty ;
+                  :teaches :ENG211 ,
+                           :ENG298 ,
+                           :ENG398 ,
+                           :EPS700 ,
+                           :FIN300 ;
+                  :Email_Id "davidsmith@my.ccsu.edu" ;
+                  :Gender "Male" ;
+                  :Qualification "PhD" ;
+                  :address "550 Silas Deane Ave., Manchester, CT" ;
+                  :first_Name "David" ;
+                  :last_Name "Smith" ;
+                  :phone "847-239-2938" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Adjunct_Lecture3
+:Adjunct_Lecture3 rdf:type owl:NamedIndividual ,
+                           :AdjunctFaculty ,
+                           :TeachingFaculty ;
+                  :teaches :CET501 ,
+                           :CET569 ,
+                           :CET596 ,
+                           :CS502 ,
+                           :CS530 ,
+                           :CS575 ;
+                  :Email_Id "jianchang@my.ccsu.edu" ;
+                  :Gender "Female" ;
+                  :Qualification "PhD" ;
+                  :address "734 Capitol Ave., Springfield, MA" ;
+                  :first_Name "Jian" ;
+                  :last_Name "Chang" ;
+                  :phone "837-198-2938" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#ArtificialIntelligence
+:ArtificialIntelligence rdf:type owl:NamedIndividual ,
+                                 :Books ;
+                        :is_Used_By :CS570 ;
+                        :ISBN "ISBN_56234152" ;
+                        :author "Peter Norvig" ;
+                        :title "Artificial Intelligence" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#BIO725
+:BIO725 rdf:type owl:NamedIndividual ,
+                 :Courses ,
+                 :DoctorateOfNurseAnesthesia ;
+        :has_Enrolled_In :BIO739 ;
+        :is_Offered_By :Lecture5 ;
+        :is_Prerequisite_Of :BIO739 ,
+                            :BIO742 ;
+        :title "Bioethics in Nurse Anesthesia" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#BIO739
+:BIO739 rdf:type owl:NamedIndividual ,
+                 :Courses ,
+                 :DoctorateOfNurseAnesthesia ;
+        :has_Prerequisite :BIO725 ;
+        :is_Offered_By :Lecture5 ;
+        :uses :Pharmacology ;
+        :title "Advanced Topics in Pharmacology" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#BIO742
+:BIO742 rdf:type owl:NamedIndividual ,
+                 :Courses ,
+                 :DoctorateOfNurseAnesthesia ;
+        :has_Prerequisite :BIO725 ;
+        :is_Offered_By :Lecture5 ;
+        :title "Advanced topics in Nurse Anesthesia" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#B_Above_Average
+:B_Above_Average rdf:type owl:NamedIndividual ,
+                          :GradingSystem .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CET501
+:CET501 rdf:type owl:NamedIndividual ,
+                 :Courses ,
+                 :NetworkingAndTelecommunicationsTechnology ;
+        :is_Offered_By :Adjunct_Lecture3 ,
+                       :Lecture2 ;
+        :is_Prerequisite_Of :CET569 ,
+                            :CET594 ,
+                            :CET596 ,
+                            :CS501 ,
+                            :CS502 ;
+        :uses :Networking ;
+        :title "Applied Networking Technology I" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CET569
+:CET569 rdf:type owl:NamedIndividual ,
+                 :Courses ,
+                 :NetworkingAndTelecommunicationsTechnology ;
+        :has_Prerequisite :CET501 ;
+        :is_Offered_By :Adjunct_Lecture1 ,
+                       :Adjunct_Lecture3 ,
+                       :Lecture2 ,
+                       :Lecture3 ;
+        :title "Network Security Management" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CET594
+:CET594 rdf:type owl:NamedIndividual ,
+                 :Courses ,
+                 :NetworkingAndTelecommunicationsTechnology ;
+        :has_Prerequisite :CET501 ;
+        :is_Offered_By :Adjunct_Lecture1 ,
+                       :Lecture2 ;
+        :title "Research Design" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CET596
+:CET596 rdf:type owl:NamedIndividual ,
+                 :Courses ,
+                 :NetworkingAndTelecommunicationsTechnology ;
+        :has_Prerequisite :CET501 ;
+        :is_Offered_By :Adjunct_Lecture1 ,
+                       :Lecture2 ,
+                       :Lecture3 ;
+        :title "Technological Problems and Issues" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CHEM210
+:CHEM210 rdf:type owl:NamedIndividual ,
+                  :Biochemistry ,
+                  :Courses ;
+         :is_Offered_By :Lecture5 ;
+         :is_Prerequisite_Of :CHEM320 ;
+         :title "Foundations of Organic Chemistry" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CHEM260
+:CHEM260 rdf:type owl:NamedIndividual ,
+                  :Biochemistry ,
+                  :Courses ;
+         :is_Offered_By :Lecture5 ;
+         :is_Prerequisite_Of :CHEM320 ;
+         :title "Foundations of Inorganic Chemistry" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CHEM320
+:CHEM320 rdf:type owl:NamedIndividual ,
+                  :Biochemistry ,
+                  :Courses ;
+         :has_Prerequisite :CHEM210 ,
+                           :CHEM260 ;
+         :is_Offered_By :Lecture5 ;
+         :uses :Chemistry ;
+         :title "Biophysical Chemistry" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CS407
+:CS407 rdf:type owl:NamedIndividual ,
+                :ComputerScience ,
+                :Courses ;
+       :has_Prerequisite :CS501 ,
+                         :CS502 ;
+       :is_Offered_By :Lecture1 ;
+       :uses :Semantics ;
+       :title "Semnatics Web Technology" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CS500
+:CS500 rdf:type owl:NamedIndividual ,
+                :ComputerScience ,
+                :Courses ;
+       :is_Offered_By :Lecture1 ;
+       :is_Prerequisite_Of :CS501 ,
+                           :CS502 ;
+       :title "Computer Science for Computer Information Technology" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CS501
+:CS501 rdf:type owl:NamedIndividual ,
+                :ComputerScience ,
+                :Courses ;
+       :has_Prerequisite :CS500 ;
+       :is_Offered_By :Lecture1 ;
+       :is_Prerequisite_Of :CS407 ,
+                           :CS560 ,
+                           :CS570 ,
+                           :CS575 ,
+                           :CS595 ;
+       :uses :Data_Structures_And_Algorithms ;
+       :title "Foundations of Computer Science" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CS502
+:CS502 rdf:type owl:NamedIndividual ,
+                :ComputerScience ,
+                :Courses ;
+       :has_Prerequisite :CET501 ,
+                         :CS500 ;
+       :is_Offered_By :Adjunct_Lecture3 ,
+                      :Lecture3 ;
+       :uses :Computer_Architecture ;
+       :title "Computing and Communications Technology" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CS530
+:CS530 rdf:type owl:NamedIndividual ,
+                :ComputerScience ,
+                :Courses ;
+       :has_Prerequisite :CS501 ,
+                         :CS502 ,
+                         :CS560 ;
+       :is_Offered_By :Adjunct_Lecture3 ,
+                      :Lecture3 ;
+       :title "Advanced Software Engineering" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CS560
+:CS560 rdf:type owl:NamedIndividual ,
+                :ComputerScience ,
+                :Courses ;
+       :has_Prerequisite :CS501 ,
+                         :CS502 ;
+       :is_Offered_By :Lecture3 ;
+       :title "Topics in Software Engineering" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CS570
+:CS570 rdf:type owl:NamedIndividual ,
+                :ComputerScience ,
+                :Courses ;
+       :has_Prerequisite :CS501 ,
+                         :CS502 ;
+       :is_Offered_By :Lecture1 ;
+       :uses :ArtificialIntelligence ;
+       :title "Topics in Artificial Intelligence" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CS575
+:CS575 rdf:type owl:NamedIndividual ,
+                :ComputerScience ,
+                :Courses ;
+       :has_Prerequisite :CS501 ,
+                         :CS502 ;
+       :is_Offered_By :Adjunct_Lecture3 ,
+                      :Lecture1 ;
+       :title "Linked Data Engineering" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CS595
+:CS595 rdf:type owl:NamedIndividual ,
+                :ComputerScience ,
+                :Courses ;
+       :has_Prerequisite :CS501 ,
+                         :CS502 ;
+       :is_Offered_By :Adjunct_Lecture1 ;
+       :title "Capstone in Software Engineering" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#CSClubEvent
+:CSClubEvent rdf:type owl:NamedIndividual ,
+                      :ClubEvents ;
+             :is_Attended_By :Student1 ,
+                             :Student10 ,
+                             :Student4 ,
+                             :Student5 ,
+                             :Student6 ,
+                             :Student7 ,
+                             :Student9 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#C_Average
+:C_Average rdf:type owl:NamedIndividual ,
+                    :GradingSystem .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Chemistry
+:Chemistry rdf:type owl:NamedIndividual ,
+                    :Books ;
+           :is_Used_By :CHEM320 ;
+           :ISBN "ISBN: 978-1-4612-7943-3" ;
+           :author "James P.Allen" ;
+           :title "Modern Biophysical Chemistry" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Computer_Architecture
+:Computer_Architecture rdf:type owl:NamedIndividual ,
+                                :Publications ;
+                       :is_Used_By :CS502 ;
+                       :ISBN "978-0-12-407726-3" ;
+                       :author "David A.Patterson" ;
+                       :title "Computer Organization And Design" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#DATA513
+:DATA513 rdf:type owl:NamedIndividual ,
+                  :Courses ,
+                  :DataMining ;
+         :is_Offered_By :Adjunct_Lecture1 ;
+         :is_Prerequisite_Of :DATA551 ;
+         :title "Predictive Analytics: Classification" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#DATA531
+:DATA531 rdf:type owl:NamedIndividual ,
+                  :Courses ,
+                  :DataMining ;
+         :is_Offered_By :Adjunct_Lecture1 ;
+         :title "Text Analytics with Information Retrieval" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#DATA551
+:DATA551 rdf:type owl:NamedIndividual ,
+                  :Courses ,
+                  :DataMining ;
+         :has_Prerequisite :DATA513 ;
+         :is_Offered_By :Adjunct_Lecture1 ;
+         :title "Predictive Modeling for Insurance Data" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#D_Passing_Below_Average
+:D_Passing_Below_Average rdf:type owl:NamedIndividual ,
+                                  :GradingSystem .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Data_Structures_And_Algorithms
+:Data_Structures_And_Algorithms rdf:type owl:NamedIndividual ,
+                                         :Publications ;
+                                :is_Used_By :CS501 ;
+                                :ISBN "0-672-32453-9" ;
+                                :author "Robert Lafore" ;
+                                :title "Data Structures And Algorithms in Java" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#EDL611
+:EDL611 rdf:type owl:NamedIndividual ,
+                 :Courses ,
+                 :EducationalLeadership ;
+        :is_Prerequisite_Of :EDL721 ;
+        :title "School Leadership II" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#EDL721
+:EDL721 rdf:type owl:NamedIndividual ,
+                 :Courses ,
+                 :EducationalLeadership ;
+        :has_Prerequisite :EDL611 ;
+        :title "Administration and Ethics in Higher Education" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#ENG211
+:ENG211 rdf:type owl:NamedIndividual ,
+                 :Courses ,
+                 :English ;
+        :is_Offered_By :Adjunct_Lecture2 ;
+        :is_Prerequisite_Of :ENG398 ;
+        :title "Survey of American Literature: Civil War to the Present" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#ENG298
+:ENG298 rdf:type owl:NamedIndividual ,
+                 :Courses ,
+                 :English ;
+        :is_Offered_By :Adjunct_Lecture2 ;
+        :title "Introduction to Literary Studies" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#ENG398
+:ENG398 rdf:type owl:NamedIndividual ,
+                 :Courses ,
+                 :English ;
+        :has_Prerequisite :ENG211 ;
+        :is_Offered_By :Adjunct_Lecture2 ;
+        :title "Topics in Literary Theory and Research" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#EPS700
+:EPS700 rdf:type owl:NamedIndividual ,
+                 :Courses ,
+                 :EducationalLeadership ;
+        :is_Offered_By :Adjunct_Lecture2 ;
+        :title "The Purposes of Education in America" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Employee1
+:Employee1 rdf:type owl:NamedIndividual ,
+                    :NonTeachingFaculty ,
+                    :Registrar ;
+           :Email_Id "mansonrobert@my.ccsu.edu" ;
+           :Gender "Male" ;
+           :Qualification "MBA" ;
+           :address "876 Farmington Ave., Avon, CT." ;
+           :first_Name "Manson" ;
+           :last_Name "Robert" ;
+           :staff_Id 92376521 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Employee2
+:Employee2 rdf:type owl:NamedIndividual ,
+                    :Admission ,
+                    :NonTeachingFaculty ;
+           :Email_Id "lukeaven@my.ccsu.edu" ;
+           :Gender "Male" ;
+           :Qualification "MBA" ;
+           :address "273 East Woods, Bloomfield, CT." ;
+           :first_Name "Luke" ;
+           :last_Name "Evan" ;
+           :staff_Id 93862345 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Employee3
+:Employee3 rdf:type owl:NamedIndividual ,
+                    :Admission ,
+                    :NonTeachingFaculty ;
+           :Email_Id "danielandrew@my.ccsu.edu" ;
+           :Gender "Male" ;
+           :Qualification "MBA" ;
+           :address "834 Burdside Ave., Bloomfield, CT" ;
+           :first_Name "Daniel" ;
+           :last_Name "Andrew" ;
+           :phone "938-274-2845" ;
+           :staff_Id 92643026 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#FIN300
+:FIN300 rdf:type owl:NamedIndividual ,
+                 :Accounting ,
+                 :Courses ;
+        :is_Offered_By :Adjunct_Lecture2 ;
+        :title "Personal Finance" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#F_Failure
+:F_Failure rdf:type owl:NamedIndividual ,
+                    :GradingSystem .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#JavaSoftwareSolutions
+:JavaSoftwareSolutions rdf:type owl:NamedIndividual ,
+                                :Books ;
+                       :is_Offered_By :Lecture1 ;
+                       :is_Used_By :CS500 ;
+                       :ISBN "978-0-13-446202-8" ;
+                       :author "Lewis Loftus" ;
+                       :title "Foundations of Program Design" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Lecture1
+:Lecture1 rdf:type owl:NamedIndividual ,
+                   :FulltimeFaculty ,
+                   :TeachingFaculty ;
+          :teaches :CS407 ,
+                   :CS500 ,
+                   :CS501 ,
+                   :CS570 ,
+                   :CS575 ;
+          :Email_Id "nelizlatareva@my.ccsu.edu" ;
+          :Gender "Female" ;
+          :Qualification "PhD" ;
+          :address "48 SnowBerry Lane, Farmington, CT." ;
+          :first_Name "Neli" ;
+          :last_Name "Zlatareva" ;
+          :phone "893-397-2635" ;
+          :staff_Id 97234243 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Lecture2
+:Lecture2 rdf:type owl:NamedIndividual ,
+                   :FulltimeFaculty ,
+                   :TeachingFaculty ;
+          :teaches :CET501 ,
+                   :CET569 ,
+                   :CET594 ,
+                   :CET596 ;
+          :Email_Id "robertsmith@my.ccsu.edu" ;
+          :Gender "Male" ;
+          :Qualification "PhD" ;
+          :address "456 Southwest Drive, Glastonbury, CT" ;
+          :first_Name "Robert" ;
+          :last_Name "Smith" ;
+          :phone "894-283-2084" ;
+          :staff_Id 96243016 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Lecture3
+:Lecture3 rdf:type owl:NamedIndividual ,
+                   :FulltimeFaculty ,
+                   :TeachingFaculty ;
+          :teaches :CET569 ,
+                   :CET596 ,
+                   :CS502 ,
+                   :CS530 ,
+                   :CS560 ;
+          :Email_Id "chadwilliams@my.ccsu.edu" ;
+          :Gender "Male" ;
+          :Qualification "PhD" ;
+          :address "499 Burnside Ave., Middletown, CT." ;
+          :first_Name "Chad" ;
+          :last_Name "Williams" ;
+          :phone "847-302-3948" ;
+          :staff_Id 62830134 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Lecture4
+:Lecture4 rdf:type owl:NamedIndividual ,
+                   :FulltimeFaculty ,
+                   :TeachingFaculty ;
+          :teaches :AC407 ,
+                   :AC490 ,
+                   :MATH152 ,
+                   :MATH218 ,
+                   :MATH228 ;
+          :Email_Id "irenapevac@my.ccsu.edu" ;
+          :Gender "Female" ;
+          :Qualification "PhD" ;
+          :address "1080 Columbus Blvd., Simsbury, CT" ;
+          :first_Name "Irena" ;
+          :last_Name "Pevac" ;
+          :phone "829-1000-291" ;
+          :staff_Id 69023810 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Lecture5
+:Lecture5 rdf:type owl:NamedIndividual ,
+                   :FulltimeFaculty ,
+                   :TeachingFaculty ;
+          :teaches :BIO725 ,
+                   :BIO739 ,
+                   :BIO742 ,
+                   :CHEM210 ,
+                   :CHEM260 ,
+                   :CHEM320 ;
+          :Email_Id "sixiachen@my.ccsu.edu" ;
+          :Gender "Female" ;
+          :Qualification "PhD" ;
+          :address "38 Seymour St., Avon, CT" ;
+          :first_Name "Sixia" ;
+          :last_Name "Chen" ;
+          :phone "829-1082-293" ;
+          :staff_Id 62829273 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Librarian
+:Librarian rdf:type owl:NamedIndividual ,
+                    :Library .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#LinearAlgebra
+:LinearAlgebra rdf:type owl:NamedIndividual ,
+                        :Books ;
+               :is_Used_By :MATH228 ;
+               :ISBN "578-0-13-429202-8" ;
+               :author "Gilbert Strang" ;
+               :title "Linear Algebra And Probability" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#MATH152
+:MATH152 rdf:type owl:NamedIndividual ,
+                  :Courses ,
+                  :MathematicalScience ;
+         :is_Offered_By :Lecture4 ;
+         :is_Prerequisite_Of :MATH218 ,
+                             :MATH228 ;
+         :title "Calculus I" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#MATH218
+:MATH218 rdf:type owl:NamedIndividual ,
+                  :Courses ,
+                  :MathematicalScience ;
+         :has_Prerequisite :MATH152 ;
+         :is_Offered_By :Lecture4 ;
+         :title "Discrete Math" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#MATH228
+:MATH228 rdf:type owl:NamedIndividual ,
+                  :Courses ,
+                  :MathematicalScience ;
+         :has_Prerequisite :MATH152 ;
+         :is_Offered_By :Lecture4 ;
+         :uses :LinearAlgebra ;
+         :title "Introduction to Linear Algebra" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Networking
+:Networking rdf:type owl:NamedIndividual ,
+                     :Books ;
+            :is_Used_By :CET501 ;
+            :ISBN "978-0-13-446202-9" ;
+            :author "Mark A. Dye" ;
+            :title "Introductions to Networks" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Pharmacology
+:Pharmacology rdf:type owl:NamedIndividual ,
+                       :Books ;
+              :is_Used_By :BIO739 ;
+              :ISBN "2763-238-23623" ;
+              :author "Andrew M. Peterson and Virginia Poole Arcangelo" ;
+              :title "Pharmacotherapeutics for Advanced Practice: A Practical Approach" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Semantics
+:Semantics rdf:type owl:NamedIndividual ,
+                    :Publications ;
+           :is_Used_By :CS407 ;
+           :ISBN "978-1-4200-9050-5" ;
+           :author "Pascal Hitzler" ;
+           :title "Founadtions Of Semantic Web Technologies" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#SpringConcert
+:SpringConcert rdf:type owl:NamedIndividual ,
+                        :InstrumentalEnsembleEvent ;
+               :is_Attended_By :Student1 ,
+                               :Student10 ,
+                               :Student11 ,
+                               :Student12 ,
+                               :Student3 ,
+                               :Student6 ,
+                               :Student7 ,
+                               :Student8 ,
+                               :Student9 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student1
+:Student1 rdf:type owl:NamedIndividual ,
+                   :Student ;
+          :has_Appear_In :_SpringFinals ,
+                         :_SpringMidterm ,
+                         :_SpringQuizzes ;
+          :has_Attends :CSClubEvent ,
+                       :SpringConcert ;
+          :has_Enrolled_In :CS500 ,
+                           :CS530 ,
+                           :CS570 ,
+                           :CS575 ,
+                           :CS595 ;
+          :has_Grading :A_Superior ;
+          :studies :CS407 ,
+                   :CS501 ,
+                   :CS502 ;
+          :Email_Id "aditisharma@my.ccsu.edu" ;
+          :Gender "Female" ;
+          :Year_Of_Admission 2017 ;
+          :Year_Of_Graduation 2019 ;
+          :age 27 ;
+          :first_Name "Aditi" ;
+          :last_Name "Sharma" ;
+          :phone "860-995-5780" ;
+          :student_Id 27635289 ;
+          :title "360 Main St., Hartford,CT" .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student10
+:Student10 rdf:type owl:NamedIndividual ,
+                    :Student ;
+           :has_Appear_In :_Summer_Finals ;
+           :has_Attends :CSClubEvent ,
+                        :SpringConcert ;
+           :has_Enrolled_In :DATA531 ,
+                            :DATA551 ;
+           :has_Grading :B_Above_Average ;
+           :Email_Id "rameshkapera@my.ccsu.edu" ;
+           :Gender "Male" ;
+           :Year_Of_Admission 2017 ;
+           :Year_Of_Graduation 2019 ;
+           :address "500 Farmington Ave., Farmington, CT" ;
+           :age 24 ;
+           :first_Name "Ramesh" ;
+           :last_Name "Kapera" ;
+           :phone "860-999-1234" ;
+           :student_Id 20383619 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student11
+:Student11 rdf:type owl:NamedIndividual ,
+                    :Student ;
+           :has_Appear_In :_Fall_Finals ,
+                          :_Summer_Midterm ,
+                          :_Summer_Quizzes ;
+           :has_Attends :CSClubEvent ,
+                        :SpringConcert ;
+           :has_Enrolled_In :CET569 ,
+                            :CS501 ,
+                            :CS502 ,
+                            :CS530 ,
+                            :CS575 ,
+                            :CS595 ;
+           :has_Grading :C_Average ;
+           :Email_Id "emilyparker@my.ccsu.edu" ;
+           :Gender "Female" ;
+           :Year_Of_Admission 2016 ;
+           :Year_Of_Graduation 2019 ;
+           :address "5780 Westdrive, Middlefield, CT" ;
+           :age 29 ;
+           :first_Name "Emily" ;
+           :last_Name "Parker" ;
+           :phone "980-293-2038" ;
+           :student_Id 29046254 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student12
+:Student12 rdf:type owl:NamedIndividual ,
+                    :Student ;
+           :has_Appear_In :_SpringFinals ,
+                          :_SpringMidterm ,
+                          :_SpringQuizzes ;
+           :has_Attends :CSClubEvent ,
+                        :SpringConcert ;
+           :has_Enrolled_In :CET569 ,
+                            :CS502 ,
+                            :CS530 ,
+                            :CS575 ,
+                            :CS595 ;
+           :has_Grading :D_Passing_Below_Average ;
+           :Email_Id "harrypotter@my.ccsu.edu" ;
+           :Gender "Male" ;
+           :Year_Of_Admission 2017 ;
+           :Year_Of_Graduation 2019 ;
+           :address "038, NorthWest Drive, Springfield, MA" ;
+           :age 27 ;
+           :first_Name "Harry" ;
+           :last_Name "Potter" ;
+           :phone "314-420-4147" ;
+           :student_Id 20764189 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student13
+:Student13 rdf:type owl:NamedIndividual ,
+                    :Student ;
+           :has_Appear_In :_Summer_Finals ,
+                          :_Summer_Midterm ,
+                          :_Summer_Quizzes ;
+           :has_Enrolled_In :CET596 ,
+                            :CS407 ,
+                            :CS501 ,
+                            :CS530 ,
+                            :CS560 ;
+           :has_Grading :B_Above_Average ;
+           :Email_Id "andrewwatson@my.ccsu.edu" ;
+           :Gender "Male" ;
+           :Year_Of_Admission 2016 ;
+           :Year_Of_Graduation 2018 ;
+           :address "635 Asylum Ave,. Hartford, CT" ;
+           :age 25 ;
+           :first_Name "Andrew" ;
+           :last_Name "Watson" ;
+           :phone "298-174-3946" ;
+           :student_Id 27513093 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student2
+:Student2 rdf:type owl:NamedIndividual ,
+                   :Student ;
+          :has_Appear_In :_Summer_Finals ,
+                         :_Summer_Midterm ,
+                         :_Summer_Quizzes ;
+          :has_Attends :CSClubEvent ;
+          :has_Enrolled_In :CET569 ,
+                           :CET596 ,
+                           :CS575 ;
+          :has_Grading :A_Superior ;
+          :studies :CS500 ;
+          :Email_Id "ericawalter@my.ccsu.edu" ;
+          :Gender "Female" ;
+          :Year_Of_Admission 2018 ;
+          :Year_Of_Graduation 2019 ;
+          :address "250 Main St., Hartford, CT" ;
+          :age 28 ;
+          :first_Name "Erica" ;
+          :last_Name "Walter" ;
+          :phone "860-414-4863" ;
+          :student_Id 28936476 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student3
+:Student3 rdf:type owl:NamedIndividual ,
+                   :Student ;
+          :has_Appear_In :_Fall_Finals ;
+          :has_Attends :CSClubEvent ,
+                       :SpringConcert ;
+          :has_Enrolled_In :CET594 ,
+                           :CS560 ,
+                           :CS595 ;
+          :has_Grading :A_Superior ;
+          :studies :CET569 ,
+                   :CS501 ;
+          :Email_Id "gayounglee@my.ccsu.edu" ;
+          :Gender "Female" ;
+          :Year_Of_Admission 2018 ;
+          :Year_Of_Graduation 2019 ;
+          :address "367 North Main St., Milford, CT" ;
+          :age 32 ;
+          :first_Name "Gayoung" ;
+          :last_Name "Lee" ;
+          :phone "860-767-2567" ;
+          :student_Id 23568768 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student4
+:Student4 rdf:type owl:NamedIndividual ,
+                   :Student ;
+          :has_Appear_In :_SpringFinals ,
+                         :_SpringMidterm ;
+          :has_Attends :CSClubEvent ;
+          :has_Enrolled_In :CS560 ,
+                           :CS575 ,
+                           :CS595 ;
+          :has_Grading :A_Superior ;
+          :studies :CS500 ;
+          :Email_Id "365 Buckland Hill Dr, Manchester, CT." ,
+                    "colinkelly@my.ccsu.edu" ;
+          :Gender "Male" ;
+          :Year_Of_Admission 2017 ;
+          :Year_Of_Graduation 2019 ;
+          :age 27 ;
+          :first_Name "Colin" ;
+          :last_Name "Kelly" ;
+          :phone "860-276-2146" ;
+          :student_Id 28401474 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student5
+:Student5 rdf:type owl:NamedIndividual ,
+                   :Student ;
+          :has_Appear_In :_SpringFinals ,
+                         :_SpringMidterm ;
+          :has_Attends :CSClubEvent ;
+          :has_Enrolled_In :CET596 ,
+                           :CS570 ,
+                           :CS595 ;
+          :has_Grading :A_Superior ;
+          :studies :CS407 ,
+                   :CS530 ,
+                   :CS570 ;
+          :Email_Id "shravyasingh@my.ccsu.edu" ;
+          :Gender "Female" ;
+          :Year_Of_Admission 2018 ;
+          :Year_Of_Graduation 2020 ;
+          :address "589 West Drive, East Hartford, CT." ;
+          :age 26 ;
+          :first_Name "Shravya" ;
+          :last_Name "Singh" ;
+          :phone "860-679-8989" ;
+          :student_Id 26803601 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student6
+:Student6 rdf:type owl:NamedIndividual ,
+                   :Student ;
+          :has_Appear_In :_SpringFinals ,
+                         :_SpringMidterm ,
+                         :_SpringQuizzes ;
+          :has_Attends :CSClubEvent ,
+                       :SpringConcert ;
+          :has_Enrolled_In :CS502 ,
+                           :MATH152 ,
+                           :MATH218 ,
+                           :MATH228 ;
+          :has_Grading :A_Superior ;
+          :studies :CS407 ,
+                   :CS501 ;
+          :Email_Id "carmencater@my.ccsu.edu" ;
+          :Gender "Male" ;
+          :Year_Of_Admission 2019 ;
+          :Year_Of_Graduation 2020 ;
+          :address "458 Albaney Ave., Albany, CT" ;
+          :age 23 ;
+          :first_Name "Carmen" ;
+          :last_Name "Cater" ;
+          :phone "860-293-0182" ;
+          :student_Id 20471956 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student7
+:Student7 rdf:type owl:NamedIndividual ,
+                   :Student ;
+          :has_Appear_In :_Summer_Finals ;
+          :has_Attends :CSClubEvent ,
+                       :SpringConcert ;
+          :has_Enrolled_In :ENG298 ,
+                           :ENG398 ;
+          :has_Grading :B_Above_Average ;
+          :studies :ENG211 ;
+          :Gender "Male" ;
+          :Year_Of_Admission 2016 ;
+          :Year_Of_Graduation 2018 ;
+          :address "555 Weston St., Avon, CT." ;
+          :age 26 ;
+          :first_Name "Jim" ;
+          :last_Name "Kmeic" ;
+          :phone "860-823-3984" ;
+          :student_Id 23081684 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student8
+:Student8 rdf:type owl:NamedIndividual ,
+                   :Student ;
+          :has_Appear_In :_Fall_Finals ,
+                         :_Fall_Midterm ;
+          :has_Attends :SpringConcert ;
+          :has_Enrolled_In :BIO725 ,
+                           :BIO739 ,
+                           :BIO742 ;
+          :has_Grading :D_Passing_Below_Average ;
+          :Email_Id "marysmith@my.ccsu.edu" ;
+          :Gender "Female" ;
+          :Year_Of_Admission 2016 ;
+          :Year_Of_Graduation 2019 ;
+          :address "789 Washington St., Stamford, CT" ;
+          :age 21 ;
+          :first_Name "Mary" ;
+          :last_Name "Smith" ;
+          :phone "389-293-0234" ;
+          :student_Id 24361805 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#Student9
+:Student9 rdf:type owl:NamedIndividual ,
+                   :Student ;
+          :has_Attends :CSClubEvent ,
+                       :SpringConcert ;
+          :has_Enrolled_In :CHEM260 ,
+                           :CHEM320 ;
+          :has_Grading :C_Average ;
+          :Email_Id "rafaelsolano@my.ccsu.edu" ;
+          :Gender "Male" ;
+          :Year_Of_Admission 2019 ;
+          :Year_Of_Graduation 2020 ;
+          :address "478 Maple Ave., New Haven, CT" ;
+          :age 23 ;
+          :first_Name "Rafael" ;
+          :last_Name "Solano" ;
+          :phone "860-192-1098" ;
+          :student_Id 29401391 .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#StudentWelfareConference
+:StudentWelfareConference rdf:type owl:NamedIndividual ,
+                                   :ConferenceEvent .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#_Fall_Finals
+:_Fall_Finals rdf:type owl:NamedIndividual ,
+                       :Final .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#_Fall_Midterm
+:_Fall_Midterm rdf:type owl:NamedIndividual ,
+                        :Midterm .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#_Fall_Quizzes
+:_Fall_Quizzes rdf:type owl:NamedIndividual ,
+                        :Quizz .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#_SpringFinals
+:_SpringFinals rdf:type owl:NamedIndividual ,
+                        :Final .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#_SpringMidterm
+:_SpringMidterm rdf:type owl:NamedIndividual ,
+                         :Midterm .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#_SpringQuizzes
+:_SpringQuizzes rdf:type owl:NamedIndividual ,
+                         :Quizz .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#_Summer_Finals
+:_Summer_Finals rdf:type owl:NamedIndividual ,
+                         :Final .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#_Summer_Midterm
+:_Summer_Midterm rdf:type owl:NamedIndividual ,
+                          :Midterm .
+
+
+###  http://www.cs.ccsu.edu/AditiSharma/University.owl#_Summer_Quizzes
+:_Summer_Quizzes rdf:type owl:NamedIndividual ,
+                          :Quizz .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ComputerInformationTechnology
+                :DataMining
+                :SoftwareEngineering
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Final
+                :Midterm
+                :Quizz
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
